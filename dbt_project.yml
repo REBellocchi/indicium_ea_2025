@@ -50,3 +50,6 @@ models:
       +materialized: table
       +schema: marts
 
+    aw_staging:
+      aw_erp:
+        +schema: aw_stg_erp

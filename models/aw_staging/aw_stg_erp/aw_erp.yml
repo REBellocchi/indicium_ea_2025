@@ -1,0 +1,50 @@
+sources:
+  - name: aw_erp 
+    database: fea25_05
+    schema: raw_adventure_works
+    tables:
+
+      - name: person_person
+        description: person description
+        columns:
+          - name: businessentityid 
+            description: Unique identifier for each person
+            data_tests:
+              - unique
+              - not_null
+
+      - name: sales_customer
+        description: Contains customer information.
+        columns:
+          - name: customerid
+            description: Unique identifier for each customer.
+            data_tests:
+              - unique
+              - not_null        
+
+      - name: sales_salesorderheader
+        description: Contains summarized order information.
+        columns:
+          - name: salesorderid
+            description: Unique identifier for each order.
+            data_tests:
+              - unique
+              - not_null
+
+      - name: sales_salesperson
+        description: Contains summarized order information.
+        columns:
+          - name: businessentityid
+            description: Unique identifier for each person.
+            data_tests:
+              - unique
+              - not_null
+
+      - name: sales_salesreason
+        description: Contains summarized order information.
+        columns:
+          - name: salesorderid
+            description: Unique identifier for each order.
+            data_tests:
+              - unique
+              - not_null
