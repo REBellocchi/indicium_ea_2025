@@ -1,13 +1,12 @@
 sources:
-  - name: aw_erp 
+  - name: aw_erp
     database: fea25_05
     schema: raw_adventure_works
     tables:
-
       - name: human_resources_employee
         description: employee description
         columns:
-          - name: businessentityid 
+          - name: businessentityid
             description: Unique identifier for each employee
             data_tests:
               - unique
@@ -16,7 +15,7 @@ sources:
       - name: person_address
         description: address description
         columns:
-          - name: addressid 
+          - name: addressid
             description: Unique identifier for each address
             data_tests:
               - unique
@@ -25,16 +24,16 @@ sources:
       - name: person_countryregion
         description: country codes
         columns:
-          - name: countryregioncode 
+          - name: countryregioncode
             description: Unique identifier for each country
             data_tests:
               - unique
-              - not_null    
+              - not_null
 
       - name: person_person
         description: person description
         columns:
-          - name: businessentityid 
+          - name: businessentityid
             description: Unique identifier for each person
             data_tests:
               - unique
@@ -43,7 +42,7 @@ sources:
       - name: person_stateprovince
         description: state and province information
         columns:
-          - name: stateprovinceid 
+          - name: stateprovinceid
             description: Unique identifier for each person
             data_tests:
               - unique
@@ -65,7 +64,16 @@ sources:
             description: Unique identifier for each customer
             data_tests:
               - unique
-              - not_null        
+              - not_null
+
+      - name: sales_creditcard
+        description: Contains credit card information
+        columns:
+          - name: creditcardid
+            description: Unique identifier for each credit card
+            data_tests:
+              - unique
+              - not_null
 
       - name: sales_salesorderdetail
         description: Contains detailed order information
@@ -95,10 +103,18 @@ sources:
               - not_null
 
       - name: sales_salesreason
-        description: Contains summarized order information
+        description: Contains summarized sales reason information
         columns:
           - name: salesreasonid
             description: Unique identifier for each order
             data_tests:
               - unique
               - not_null
+
+      - name: sales_salesorderheadersalesreason
+        description: Contains identifiers for sales and reasons
+        data_tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - salesorderid
+                - salesreasonid
