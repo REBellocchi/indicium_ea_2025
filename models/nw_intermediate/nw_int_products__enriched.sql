@@ -2,15 +2,15 @@ with
     -- import models
     products as (
         select *
-        from {{ ref('stg_erp__products') }}
+        from {{ ref('nw_stg_erp__products') }}
     )
     , suppliers as (
         select *
-        from {{ ref('stg_erp__suppliers') }}
+        from {{ ref('nw_stg_erp__suppliers') }}
     )
     , categories as (
         select *
-        from {{ ref('stg_erp__categories') }}
+        from {{ ref('nw_stg_erp__categories') }}
     )
     , joined as (
         select 

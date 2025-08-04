@@ -1,6 +1,6 @@
 with 
 
-source_salesperson as (
+source_salespersons as (
 
     select * from {{ source('aw_erp', 'sales_salesperson') }}
 
@@ -11,7 +11,7 @@ renamed as (
     select
        *
 
-    from source_salesperson
+    from source_salespersons
 
 )
 

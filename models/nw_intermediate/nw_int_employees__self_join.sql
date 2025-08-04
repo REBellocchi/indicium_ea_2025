@@ -2,7 +2,7 @@ with
     -- import models
     employees as (
         select *
-        from {{ ref('stg_erp__employees') }}
+        from {{ ref('nw_stg_erp__employees') }}
     )
 
     , joined as (

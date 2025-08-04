@@ -4,6 +4,33 @@ sources:
     schema: raw_adventure_works
     tables:
 
+      - name: human_resources_employee
+        description: employee description
+        columns:
+          - name: businessentityid 
+            description: Unique identifier for each employee
+            data_tests:
+              - unique
+              - not_null
+
+      - name: person_address
+        description: address description
+        columns:
+          - name: addressid 
+            description: Unique identifier for each address
+            data_tests:
+              - unique
+              - not_null
+
+      - name: person_countryregion
+        description: country codes
+        columns:
+          - name: countryregioncode 
+            description: Unique identifier for each country
+            data_tests:
+              - unique
+              - not_null    
+
       - name: person_person
         description: person description
         columns:
@@ -13,38 +40,65 @@ sources:
               - unique
               - not_null
 
+      - name: person_stateprovince
+        description: state and province information
+        columns:
+          - name: stateprovinceid 
+            description: Unique identifier for each person
+            data_tests:
+              - unique
+              - not_null
+
+      - name: production_product
+        description: product information
+        columns:
+          - name: productid
+            description: Unique identifier for each product
+            data_tests:
+              - unique
+              - not_null
+
       - name: sales_customer
-        description: Contains customer information.
+        description: Contains customer information
         columns:
           - name: customerid
-            description: Unique identifier for each customer.
+            description: Unique identifier for each customer
             data_tests:
               - unique
               - not_null        
 
+      - name: sales_salesorderdetail
+        description: Contains detailed order information
+        columns:
+          - name: salesorderdetailid
+            description: Unique identifier for each order detail
+            data_tests:
+              - unique
+              - not_null
+
       - name: sales_salesorderheader
-        description: Contains summarized order information.
+        description: Contains summarized order information
         columns:
           - name: salesorderid
-            description: Unique identifier for each order.
+            description: Unique identifier for each order
             data_tests:
               - unique
               - not_null
 
       - name: sales_salesperson
-        description: Contains summarized order information.
+        description: Contains summarized order information
         columns:
           - name: businessentityid
-            description: Unique identifier for each person.
+            description: Unique identifier for each person
             data_tests:
               - unique
               - not_null
 
       - name: sales_salesreason
-        description: Contains summarized order information.
+        description: Contains summarized order information
         columns:
-          - name: salesorderid
-            description: Unique identifier for each order.
+          - name: salesreasonid
+            description: Unique identifier for each order
             data_tests:
               - unique
               - not_null

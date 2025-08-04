@@ -2,11 +2,11 @@ with
     -- import models
     order_items as ( 
         select *
-        from {{ ref('stg_erp__order_items') }}
+        from {{ ref('nw_stg_erp__order_items') }}
     )
     ,  orders as ( 
         select *
-        from {{ ref('stg_erp__orders') }}
+        from {{ ref('nw_stg_erp__orders') }}
     )
     -- transformation
     , joined as (
