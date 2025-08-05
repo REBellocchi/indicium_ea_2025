@@ -6,7 +6,7 @@
 with
     sales_2012 as (
         select sum(gross_total) as total
-        from {{ ref('int_sales__metrics') }}
+        from {{ ref('nw_int_sales__metrics') }}
         where order_date between '2012-01-01' and '2012-12-31'
     )
 
