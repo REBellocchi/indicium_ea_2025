@@ -27,6 +27,7 @@ with
             , orders.territoryid
             , orders.creditcardid
             , creditcards.cardtype
+            , order_items.salesorderdetailid
             , order_items.productid 
             , order_items.orderqty
             , order_items.unitprice
@@ -43,7 +44,8 @@ with
 
     , metrics as (
         select 
-            salesorderid
+            salesorderdetailid
+            , salesorderid
             , orderdate
             , customerid
             , salespersonid
