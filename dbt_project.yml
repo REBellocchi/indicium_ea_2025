@@ -39,17 +39,25 @@ models:
   dbt_indicium_ea:
     +materialized: view
     # Applies to all files under models/example/
-    staging:
-      erp:
-        +schema: stg_erp
-
-    intermediate:
-      +schema: int
-
-    marts:
-      +materialized: table
-      +schema: marts
 
     aw_staging:
-      aw_erp:
+      aw_stg_erp:
         +schema: aw_stg_erp
+
+    aw_intermediate:
+      +schema: aw_int
+
+    aw_marts:
+      +materialized: table
+      +schema: aw_marts
+
+    nw_staging:
+      nw_stg_erp:
+        +schema: nw_stg_erp
+
+    nw_intermediate:
+      +schema: nw_int
+
+    nw_marts:
+      +materialized: table
+      +schema: nw_marts
