@@ -4,6 +4,7 @@ with
     order_items as (select * from {{ ref("aw_stg_erp__sales_orderdetails") }}),
     creditcards as (select * from {{ ref("aw_stg_erp__creditcards") }}),
     locations as (select * from {{ ref("aw_int_sales__location_joined") }}),
+    reasons as (select * from {{ ref('aw_int_sales__reason_joined') }}),
     -- transformation
     joined as (
         select
@@ -27,11 +28,13 @@ with
             locations.addressid,
             locations.city,
             locations.stateprovincename as stateprovince,
-            locations.countryname as country
+            locations.countryname as country,
+            reasons.reasontype
         from orders
         inner join creditcards on orders.creditcardid = creditcards.creditcardid
         inner join order_items on orders.salesorderid = order_items.salesorderid
         inner join locations on orders.salesorderid = locations.salesorderid
+        inner join reasons on orders.salesorderid = reasons.salesorderid
     ),
     metrics as (
         select
@@ -43,6 +46,7 @@ with
             territoryid,
             creditcardid,
             cardtype,
+            reasontype,
             productid,
             orderqty,
             unitprice,
