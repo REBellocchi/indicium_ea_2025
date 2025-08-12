@@ -42,6 +42,7 @@ with
             salespersonid,
             territoryid,
             creditcardid,
+            cardtype,
             productid,
             orderqty,
             unitprice,
