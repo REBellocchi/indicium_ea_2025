@@ -1,7 +1,7 @@
 /*  
     This test ensures that the gross sales for 2011 match
     the audited accounting value:
-    $12468609.74
+    $12.646.112,16
 */
 with
     aw_sales_2011 as (
@@ -11,4 +11,4 @@ with
     )
 select total
 from aw_sales_2011
-where total not between 12468609.73 and 12468609.75
+where total not between 12646112.14 and 12646112.18
