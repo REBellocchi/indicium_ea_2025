@@ -4,7 +4,7 @@ with
     order_items as (select * from {{ ref("aw_stg_erp__sales_orderdetails") }}),
     creditcards as (select * from {{ ref("aw_stg_erp__creditcards") }}),
     locations as (select * from {{ ref("aw_int_sales__location_joined") }}),
-    reasons as {{ ref('aw_int_sales__reason_joined') }}
+    reasons as (select * from {{ ref('aw_int_sales__reason_joined') }}),
     -- transformation
     joined as (
         select
