@@ -6,12 +6,12 @@ with
     locations as (select * from {{ ref("aw_int_sales__location_joined") }}),
     reasons as (select * from {{ ref('aw_int_sales__reason_joined') }}),
     products as (select * from {{ ref('aw_stg_erp__products') }}),
+    persons as (select * from {{ ref('aw_stg_erp__persons') }}),
     -- transformation
     joined as (
         select
             orders.salesorderid,
             orders.orderdate,
-            orders.customerid,
             orders.salespersonid,
             orders.territoryid,
             orders.status,
@@ -20,6 +20,8 @@ with
             orders.freight,
             orders.totaldue,
             orders.creditcardid,
+            orders.customerid,
+            persons.name as customername,
             creditcards.cardtype,
             order_items.salesorderdetailid,
             order_items.productid,
@@ -38,6 +40,7 @@ with
         left join locations on orders.salesorderid = locations.salesorderid
         left join reasons on orders.salesorderid = reasons.salesorderid
         left join products on order_items.productid = products.productid
+        left join persons on orders.customerid = persons.businessentityid
         group by all
     ),
     metrics as (
@@ -46,6 +49,7 @@ with
             salesorderid,
             orderdate,
             customerid,
+            customername,
             salespersonid,
             territoryid,
             creditcardid,
