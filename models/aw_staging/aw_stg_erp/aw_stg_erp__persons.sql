@@ -9,8 +9,8 @@ source_persons as (
 renamed as (
 
     select
-       *
-
+       *,
+       lastname||' '||coalesce(middlename, '')||' '||firstname as name
     from source_persons
 
 )
